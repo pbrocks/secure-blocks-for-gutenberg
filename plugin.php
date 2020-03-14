@@ -8,9 +8,9 @@
  * Plugin Name:       Secure Blocks for Gutenberg
  * Plugin URI:        https://github.com/mwtsn/secure-blocks-for-gutenberg
  * Description:       Secure your content in the editor by user role with Secure Blocks for Gutenberg
- * Version:           1.4.1
- * Author:            Matt Watson <matt@mwatson.co.uk>
- * Author URI:        https://mwatson.co.uk
+ * Version:           1.4.3
+ * Author:            Matt Watson <hello@mattwatson.codes>
+ * Author URI:        https://mattwatson.codes
  * License:           GPL-3.0+
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       secure-blocks-for-gutenberg
@@ -18,7 +18,7 @@
  */
 
 /**
- * Copyright (C) 2018  Matt Watson  matt@mwatson.co.uk
+ * Copyright (C) 2018  Matt Watson  hello@mattwatson.codes
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 3, as
@@ -97,7 +97,15 @@ class Main {
 		wp_enqueue_script(
 			'secure-blocks-for-gutenberg-editor-js',
 			plugins_url( $scripts, __FILE__ ),
-			[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api' ],
+			array(
+				'wp-api',
+				'wp-blocks',
+				'wp-components',
+				'wp-data',
+				'wp-editor',
+				'wp-element',
+				'wp-i18n',
+			),
 			filemtime( plugin_dir_path( __FILE__ ) . $scripts )
 		);
 
@@ -124,7 +132,7 @@ class Main {
 			wp_enqueue_script(
 				'secure-blocks-for-gutenberg-js',
 				plugins_url( $scripts, __FILE__ ),
-				[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api' ],
+				array(),
 				filemtime( plugin_dir_path( __FILE__ ) . $scripts )
 			);
 		}
@@ -149,7 +157,7 @@ class Main {
 		wp_enqueue_style(
 			'secure-blocks-for-gutenberg-admin-css',
 			plugins_url( $styles, __FILE__ ),
-			[ 'wp-blocks' ],
+			array(),
 			filemtime( plugin_dir_path( __FILE__ ) . $styles )
 		);
 	}
